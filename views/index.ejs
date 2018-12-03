@@ -3,10 +3,22 @@
   <head>
     <title>wslog</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+
   </head>
   <body>
     <h1>LeanEngine</h1>
     <p>一个简单的「websocket」示例</p>
-    <p><span>ws://localhost:3000/ws</span></p>
+    <p><div id="ws"></div></p>
   </body>
+  <script  type="text/javascript">
+    function wsurl() {
+      if(window.location.href.indexOf("http://")>=0) {
+        return "ws://"+window.location.href.substr(7)+"ws";
+      } else {
+        return "ws://"+window.location.href.substr(8)+"ws";
+      }
+    } 
+    var div = document.getElementById("ws");
+    div.textContent = wsurl();
+  </script>
 </html>
