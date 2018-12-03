@@ -3,8 +3,6 @@
 var express = require('express');
 var timeout = require('connect-timeout');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var AV = require('leanengine');
 var expressWs = require('express-ws');
 
@@ -31,10 +29,6 @@ app.use(AV.express());
 app.enable('trust proxy');
 // 需要重定向到 HTTPS 可去除下一行的注释。
 // app.use(AV.Cloud.HttpsRedirect());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 app.get('/', function(req, res) {
   res.render('index', { currentTime: new Date() });
